@@ -1,0 +1,9 @@
+.Navigation {
+  background-color: rgb(114, 124, 255);
+  box-shadow: rgba(0, 0, 0, 0.16) 2px 0px 6px 0px;
+}
+
+.navbar-brand,
+.nav-link {
+  color: white;
+}
