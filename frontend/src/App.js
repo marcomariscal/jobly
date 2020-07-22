@@ -1,15 +1,20 @@
 import React from "react";
 import "./App.css";
-import Navigation from "./Navigation";
-import Home from "./Home";
 import { BrowserRouter } from "react-router-dom";
+
+import Routes from "./Routes";
+import Navigation from "./Navigation";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Navigation />
-        <Home />
+        <div className="pt-5">
+          <div className="col-md-8 offset-md-2">
+            <Routes />
+          </div>
+        </div>
       </BrowserRouter>
     </div>
   );

@@ -1,0 +1,7 @@
+.Search {
+  margin-bottom: 1rem;
+}
+
+.Search input:active {
+  box-shadow: none;
+}

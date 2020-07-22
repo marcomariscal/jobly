@@ -3,7 +3,15 @@
   box-shadow: rgba(0, 0, 0, 0.16) 2px 0px 6px 0px;
 }
 
-.navbar-brand,
-.nav-link {
+.Navigation a {
   color: white;
+}
+
+.Navigation a.active {
+  color: rgba(211, 210, 218, 0.8);
+}
+
+.Navigation a:hover {
+  color: rgba(211, 210, 218, 0.8);
+  text-decoration: none;
 }

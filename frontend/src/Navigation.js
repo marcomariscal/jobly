@@ -1,6 +1,7 @@
 import React from "react";
 import "./Navigation.css";
-import { Navbar, NavbarBrand, Nav, NavLink, NavItem } from "reactstrap";
+import { Navbar, NavbarBrand, Nav, NavItem } from "reactstrap";
+import { NavLink } from "react-router-dom";
 
 const Navigation = ({ isLoggedIn = true }) => {
   return (
@@ -10,22 +11,32 @@ const Navigation = ({ isLoggedIn = true }) => {
         {isLoggedIn ? (
           <Nav className="ml-auto">
             <NavItem className="mr-4">
-              <NavLink href="/companies">Companies</NavLink>
+              <NavLink exact to="/companies">
+                Companies
+              </NavLink>
             </NavItem>
             <NavItem className="mr-4">
-              <NavLink href="/jobs">Jobs</NavLink>
+              <NavLink exact to="/jobs">
+                Jobs
+              </NavLink>
             </NavItem>
             <NavItem className="mr-4">
-              <NavLink href="/profile">Profile</NavLink>
+              <NavLink exact to="/profile">
+                Profile
+              </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/logout">Logout</NavLink>
+              <NavLink exact to="/logout">
+                Logout
+              </NavLink>
             </NavItem>
           </Nav>
         ) : (
           <Nav className="ml-auto">
             <NavItem>
-              <NavLink href="/login">Login</NavLink>
+              <NavLink exact to="/login">
+                Login
+              </NavLink>
             </NavItem>
           </Nav>
         )}
