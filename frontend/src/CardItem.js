@@ -1,7 +1,7 @@
 import React from "react";
 import "./CardItem.css";
 
-const CardItem = ({ name, description, logo_url }) => {
+const CardItem = ({ name, description, logo_url = null }) => {
   return (
     <div className="CardItem card">
       <div className="card-body">

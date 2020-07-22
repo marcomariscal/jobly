@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Company from "./Company";
+import CompanyCard from "./CompanyCard";
 import JoblyApi from "./JoblyApi";
 
 const Companies = () => {
@@ -19,7 +19,7 @@ const Companies = () => {
     <div>LOADING</div>
   ) : (
     companies.map(({ handle, name, description, logo_url }) => (
-      <Company
+      <CompanyCard
         key={handle}
         handle={handle}
         name={name}

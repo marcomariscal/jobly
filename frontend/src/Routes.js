@@ -11,9 +11,8 @@ import Search from "./Search";
 
 const Routes = () => {
   const renderCompany = (props) => {
-    const { company } = props.match.params;
-
-    return <Company company={company} />;
+    const { handle } = props.match.params;
+    return <Company handle={handle} />;
   };
 
   return (
@@ -26,10 +25,11 @@ const Routes = () => {
           <Search />
           <Companies />
         </Route>
-        <Route exact path="/companies/:company" render={renderCompany} />
         <Route exact path="/jobs">
+          <Search />
           <Jobs />
         </Route>
+        <Route exact path="/companies/:handle" render={renderCompany} />
         <Route exact path="/login">
           <Login />
         </Route>
