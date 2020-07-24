@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Navigation.css";
 import { Navbar, NavbarBrand, Nav, NavItem } from "reactstrap";
 import { NavLink } from "react-router-dom";
 
-const Navigation = ({ isLoggedIn = true }) => {
+const Navigation = ({ isLoggedIn }) => {
+  const logout = () => {
+    window.localStorage.clear();
+  };
+
   return (
     <div className="Navigation">
       <Navbar className="Navigation navbar-expand-md">
@@ -26,13 +30,13 @@ const Navigation = ({ isLoggedIn = true }) => {
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink exact to="/logout">
+              <NavLink exact to="/" onClick={logout}>
                 Logout
               </NavLink>
             </NavItem>
           </Nav>
         ) : (
-          <Nav className="ml-auto">
+          <Nav className="login ml-auto">
             <NavItem>
               <NavLink exact to="/login">
                 Login

@@ -15,3 +15,6 @@
   color: rgba(211, 210, 218, 0.8);
   text-decoration: none;
 }
+.login a.active {
+  color: white;
+}

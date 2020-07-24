@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 
 import Home from "./Home";
@@ -8,7 +8,7 @@ import Jobs from "./Jobs";
 import Login from "./Login";
 import Profile from "./Profile";
 
-const Routes = () => {
+const Routes = ({ tokenToStorage, isLoggedIn }) => {
   const renderCompany = (props) => {
     const { handle } = props.match.params;
     return <Company handle={handle} />;
@@ -18,17 +18,17 @@ const Routes = () => {
     <div>
       <Switch>
         <Route exact path="/">
-          <Home isLoggedIn={false} />
+          <Home isLoggedIn={isLoggedIn} />
         </Route>
         <Route exact path="/companies">
-          <Companies />
+          <Companies isLoggedIn={isLoggedIn} />
         </Route>
         <Route exact path="/jobs">
-          <Jobs />
+          <Jobs isLoggedIn={isLoggedIn} />
         </Route>
         <Route exact path="/companies/:handle" render={renderCompany} />
         <Route exact path="/login">
-          <Login />
+          <Login tokenToStorage={tokenToStorage} />
         </Route>
         <Route exact path="/profile">
           <Profile />

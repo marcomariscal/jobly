@@ -10,10 +10,10 @@ const Home = ({ isLoggedIn }) => {
           <h1 className="mb-4 font-weight-bold">Jobly</h1>
         </header>
         <p className="lead">All the jobs in one, convenient place.</p>
-        {isLoggedIn && <h2>Welcome Back!</h2>}
+        {isLoggedIn && <h2>Welcome!</h2>}
         {!isLoggedIn && (
           <Link to="/login" className="btn btn-primary font-weight-bold">
-            Log In
+            Login
           </Link>
         )}
       </div>
