@@ -1,0 +1,35 @@
+.LoginForm.btn:focus {
+  box-shadow: none !important;
+  background-color: rgb(50, 57, 155);
+  border-color: rgb(43, 49, 129);
+}
+
+.LoginForm.btn {
+  background-color: rgb(50, 57, 155);
+  border-color: rgb(43, 49, 129);
+}
+
+.LoginForm.btn:not(:disabled):not(:disabled):active {
+  background-color: rgb(18, 23, 95) !important;
+}
+
+.btn-group button {
+  border-bottom-right-radius: 0%;
+  border-bottom-left-radius: 0%;
+}
+
+.LoginForm.btn:hover {
+  background-color: rgb(30, 39, 165);
+  border-color: rgb(30, 39, 165);
+}
+
+.LoginForm.btn.btn-primary.active {
+  background-color: rgb(18, 23, 95) !important;
+  border-color: rgb(18, 23, 95) !important;
+}
+
+label {
+  font-weight: 500;
+  display: inline-block;
+  margin-bottom: 1rem;
+}

@@ -1,9 +1,12 @@
-.Job button {
+.Job.btn,
+.Job.btn:focus,
+.Job.btn:active {
   background-color: rgb(18, 23, 95);
   border-color: rgb(18, 23, 95);
+  box-shadow: none;
 }
 
-.Job button:hover {
+.Job.btn:hover {
   background-color: rgb(73, 85, 245);
   border-color: rgb(73, 85, 245);
 }

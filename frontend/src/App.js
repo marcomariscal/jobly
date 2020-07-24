@@ -11,9 +11,7 @@ function App() {
       <BrowserRouter>
         <Navigation />
         <div className="pt-5">
-          <div className="col-md-8 offset-md-2">
-            <Routes />
-          </div>
+          <Routes />
         </div>
       </BrowserRouter>
     </div>

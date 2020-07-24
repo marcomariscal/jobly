@@ -7,7 +7,6 @@ import Company from "./Company";
 import Jobs from "./Jobs";
 import Login from "./Login";
 import Profile from "./Profile";
-import Search from "./Search";
 
 const Routes = () => {
   const renderCompany = (props) => {
@@ -19,14 +18,12 @@ const Routes = () => {
     <div>
       <Switch>
         <Route exact path="/">
-          <Home />
+          <Home isLoggedIn={false} />
         </Route>
         <Route exact path="/companies">
-          <Search />
           <Companies />
         </Route>
         <Route exact path="/jobs">
-          <Search />
           <Jobs />
         </Route>
         <Route exact path="/companies/:handle" render={renderCompany} />

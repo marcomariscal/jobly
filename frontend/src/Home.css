@@ -3,3 +3,12 @@
   display: flex;
   align-items: center;
 }
+.Home a {
+  background-color: rgb(18, 23, 95);
+  border-color: rgb(18, 23, 95);
+}
+
+.Home a:hover {
+  background-color: rgb(73, 85, 245);
+  border-color: rgb(73, 85, 245);
+}

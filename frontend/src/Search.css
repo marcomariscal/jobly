@@ -2,6 +2,12 @@
   margin-bottom: 1rem;
 }
 
-.Search input:active {
+.Search .form-control:focus {
+  border-color: #cccccc;
+  box-shadow: none;
+}
+
+.Search button:focus {
+  border-color: #cccccc;
   box-shadow: none;
 }

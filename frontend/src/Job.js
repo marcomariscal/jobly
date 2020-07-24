@@ -12,7 +12,7 @@ const Job = ({ title, equity, salary }) => {
         <div className="card-text">{salary}</div>
         <button
           type="button"
-          className="btn btn-primary font-weight-bold text-uppercase float-right"
+          className="Job btn btn-primary font-weight-bold text-uppercase float-right"
         >
           Apply
         </button>

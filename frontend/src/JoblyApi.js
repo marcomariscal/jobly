@@ -3,9 +3,10 @@ import axios from "axios";
 class JoblyApi {
   static async request(endpoint, paramsOrData = {}, verb = "get") {
     paramsOrData._token = // for now, hardcode token for "testing"
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc" +
-      "3RpbmciLCJpc19hZG1pbiI6ZmFsc2UsImlhdCI6MTU1MzcwMzE1M30." +
-      "COmFETEsTxN_VfIlgIKw0bYJLkvbRQNgO1XCSE8NZ0U";
+      // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc" +
+      // "3RpbmciLCJpc19hZG1pbiI6ZmFsc2UsImlhdCI6MTU1MzcwMzE1M30." +
+      // "COmFETEsTxN_VfIlgIKw0bYJLkvbRQNgO1XCSE8NZ0U";
+      JSON.parse(window.localStorage.getItem("token"));
 
     console.debug("API Call:", endpoint, paramsOrData, verb);
 
@@ -27,8 +28,8 @@ class JoblyApi {
     }
   }
 
-  static async getCompanies() {
-    let res = await this.request(`companies/`);
+  static async getCompanies(params = {}) {
+    let res = await this.request(`companies/`, params);
     return res;
   }
 
@@ -37,14 +38,24 @@ class JoblyApi {
     return res.company;
   }
 
-  static async getJobs() {
-    let res = await this.request(`jobs/`);
+  static async getJobs(params = {}) {
+    let res = await this.request(`jobs/`, params);
     return res;
   }
 
   static async getJob(id) {
     let res = await this.request(`jobs/${id}`);
     return res.company;
+  }
+
+  static async registerUser(data) {
+    let res = await this.request(`users/`, data, "post");
+    return res;
+  }
+
+  static async loginUser(data) {
+    let res = await this.request(`login/`, data, "post");
+    return res;
   }
 }
 
