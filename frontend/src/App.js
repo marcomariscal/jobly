@@ -5,38 +5,46 @@ import useLocalStorageState from "./hooks/useLocalStorageState";
 
 import Routes from "./Routes";
 import Navigation from "./Navigation";
-import { Spinner } from "reactstrap";
 import JoblyApi from "./JoblyApi";
 
 function App() {
-  const [currentUser, setCurrentUser] = useState({ currentUser: {} });
-  const [isLoggedIn, setIsLoggedIn] = useState(() => {
-    return window.localStorage.getItem("token");
-  });
-  const [infoLoaded, setInfoLoaded] = useState(false);
-  const [token, setToken] = useLocalStorageState("token", "");
+  const [user, setUser] = useState({ currentUser: null });
+  const [token, setToken] = useLocalStorageState("token", null);
+  const [username, setUsername] = useLocalStorageState("username", null);
 
   const tokenToStorage = (token) => {
     setToken(token);
-    if (token) {
-      setIsLoggedIn(true);
-    }
   };
 
-  // useEffect(() => {
-  //   async function getCurrentUser(username) {
-  //     const res = await JoblyApi.getUser(username);
-  //     setCurrentUser(res);
-  //   }
-  //   // getCurrentUser("marcomariscal");
-  // }, []);
+  const usernameToStorage = (username) => {
+    setUsername(username);
+  };
+
+  useEffect(() => {
+    async function getUser() {
+      const { user } = await JoblyApi.getUser(username);
+      setUser({ currentUser: user });
+    }
+    getUser();
+  }, [username, token]);
+
+  const getCurrentUser = (username) => {
+    setUsername({ username });
+  };
+
+  const { currentUser } = user;
 
   return (
     <div className="App">
       <BrowserRouter>
-        <Navigation isLoggedIn={isLoggedIn} />
+        <Navigation currentUser={currentUser} setToken={setToken} />
         <div className="pt-5">
-          <Routes tokenToStorage={tokenToStorage} isLoggedIn={isLoggedIn} />
+          <Routes
+            tokenToStorage={tokenToStorage}
+            getCurrentUser={getCurrentUser}
+            currentUser={currentUser}
+            usernameToStorage={usernameToStorage}
+          />
         </div>
       </BrowserRouter>
     </div>

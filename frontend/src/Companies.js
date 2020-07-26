@@ -3,8 +3,9 @@ import CompanyCard from "./CompanyCard";
 import Search from "./Search";
 import JoblyApi from "./JoblyApi";
 import { Spinner } from "reactstrap";
+import AuthError from "./AuthError";
 
-const Companies = () => {
+const Companies = ({ currentUser }) => {
   const [companies, setCompanies] = useState([]);
   const [loading, setIsLoading] = useState(true);
 
@@ -45,7 +46,11 @@ const Companies = () => {
     </div>
   );
 
-  return <div className="col-md-8 offset-md-2">{render}</div>;
+  return (
+    <div className="col-md-8 offset-md-2">
+      {currentUser ? render : <AuthError />}
+    </div>
+  );
 };
 
 export default Companies;

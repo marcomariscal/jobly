@@ -4,7 +4,7 @@ const Alert = ({ type, messages }) => {
   return (
     <div className={`alert alert-${type} fade show`} role="alert">
       {messages.map((m) => (
-        <p key={m} className="my-1 small">
+        <p key={m} className="mb-0 small">
           {m}
         </p>
       ))}

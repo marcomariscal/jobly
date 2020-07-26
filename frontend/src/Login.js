@@ -3,10 +3,9 @@ import LoginForm from "./LoginForm";
 import JoblyApi from "./JoblyApi";
 import { useHistory } from "react-router-dom";
 
-const Login = ({ tokenToStorage }) => {
+const Login = ({ tokenToStorage, getCurrentUser, usernameToStorage }) => {
   const history = useHistory();
   const [messages, setMessages] = useState({ messages: [] });
-  const [invalidAuth, setInValidAuth] = useState(false);
 
   // log the user in and get a token
   const handleLogin = async (data) => {
@@ -15,7 +14,6 @@ const Login = ({ tokenToStorage }) => {
       tokenToStorage(token);
       history.push("/");
     } catch (e) {
-      setInValidAuth(true);
       setMessages({ messages: e });
     }
   };
@@ -27,7 +25,6 @@ const Login = ({ tokenToStorage }) => {
       tokenToStorage(token);
       history.push("/");
     } catch (e) {
-      setInValidAuth(true);
       setMessages({ messages: e });
     }
   };
@@ -36,8 +33,9 @@ const Login = ({ tokenToStorage }) => {
     <LoginForm
       login={handleLogin}
       register={handleRegister}
-      invalidAuth={invalidAuth}
       messages={messages.messages}
+      getCurrentUser={getCurrentUser}
+      usernameToStorage={usernameToStorage}
     />
   );
 };

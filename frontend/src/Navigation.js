@@ -3,16 +3,17 @@ import "./Navigation.css";
 import { Navbar, NavbarBrand, Nav, NavItem } from "reactstrap";
 import { NavLink } from "react-router-dom";
 
-const Navigation = ({ isLoggedIn }) => {
+const Navigation = ({ currentUser, setToken }) => {
   const logout = () => {
     window.localStorage.clear();
+    setToken(null);
   };
 
   return (
     <div className="Navigation">
       <Navbar className="Navigation navbar-expand-md">
         <NavbarBrand href="/">Jobly</NavbarBrand>
-        {isLoggedIn ? (
+        {currentUser ? (
           <Nav className="ml-auto">
             <NavItem className="mr-4">
               <NavLink exact to="/companies">
@@ -29,7 +30,7 @@ const Navigation = ({ isLoggedIn }) => {
                 Profile
               </NavLink>
             </NavItem>
-            <NavItem>
+            <NavItem className="logout mr-4">
               <NavLink exact to="/" onClick={logout}>
                 Logout
               </NavLink>
@@ -38,7 +39,7 @@ const Navigation = ({ isLoggedIn }) => {
         ) : (
           <Nav className="login ml-auto">
             <NavItem>
-              <NavLink exact to="/login">
+              <NavLink className="mr-4" exact to="/login">
                 Login
               </NavLink>
             </NavItem>

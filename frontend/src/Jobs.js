@@ -3,8 +3,9 @@ import JoblyApi from "./JoblyApi";
 import Search from "./Search";
 import Job from "./Job";
 import { Spinner } from "reactstrap";
+import AuthError from "./AuthError";
 
-const Jobs = () => {
+const Jobs = ({ currentUser }) => {
   const [jobs, setJobs] = useState();
   const [loading, setIsLoading] = useState(true);
 
@@ -39,7 +40,11 @@ const Jobs = () => {
     </div>
   );
 
-  return <div className="col-md-8 offset-md-2">{render}</div>;
+  return (
+    <div className="col-md-8 offset-md-2">
+      {currentUser ? render : <AuthError />}
+    </div>
+  );
 };
 
 export default Jobs;

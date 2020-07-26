@@ -2,12 +2,18 @@ import React, { useState } from "react";
 import "./LoginForm.css";
 import Alert from "./Alert";
 
-const LoginForm = ({ login, register, invalidAuth, messages }) => {
+const LoginForm = ({
+  login,
+  register,
+  messages,
+  getCurrentUser,
+  usernameToStorage,
+}) => {
   const [view, setView] = useState({
     activeView: "login",
   });
 
-  const [formdata, setFormData] = useState({
+  const [formData, setFormData] = useState({
     username: "",
     password: "",
     first_name: "",
@@ -36,15 +42,19 @@ const LoginForm = ({ login, register, invalidAuth, messages }) => {
 
     // assess the current view and either log in or register accordingly
     if (view.activeView === "login") {
-      await login(formdata);
+      await login(formData);
+      await getCurrentUser(formData.username);
+      usernameToStorage(formData.username);
     } else if (view.activeView === "signup") {
-      await register(formdata);
+      await register(formData);
+      await getCurrentUser(formData.username);
+      usernameToStorage(formData.username);
     } else {
       alert("Hmmm, that didn't work. Please try again.");
     }
   };
 
-  const { username, password, firstName, lastName, email } = formdata;
+  const { username, password, first_name, last_name, email } = formData;
 
   const signupFormRender = (
     <>
@@ -58,7 +68,7 @@ const LoginForm = ({ login, register, invalidAuth, messages }) => {
           id="first-name"
           name="first_name"
           onChange={handleFormChange}
-          value={firstName}
+          value={first_name}
         />
       </div>
       <div className="form-group">
@@ -71,7 +81,7 @@ const LoginForm = ({ login, register, invalidAuth, messages }) => {
           id="last-name"
           name="last_name"
           onChange={handleFormChange}
-          value={lastName}
+          value={last_name}
         />
       </div>
       <div className="form-group">
@@ -144,7 +154,9 @@ const LoginForm = ({ login, register, invalidAuth, messages }) => {
               />
             </div>
             {activeView === "signup" && signupFormRender}
-            {invalidAuth && <Alert type={"danger"} messages={messages} />}
+            {messages.length > 0 && (
+              <Alert type={"danger"} messages={messages} />
+            )}
             <button className="LoginForm btn btn-primary">Submit</button>
           </form>
         </div>

@@ -8,30 +8,39 @@ import Jobs from "./Jobs";
 import Login from "./Login";
 import Profile from "./Profile";
 
-const Routes = ({ tokenToStorage, isLoggedIn }) => {
+const Routes = ({
+  tokenToStorage,
+  getCurrentUser,
+  currentUser,
+  usernameToStorage,
+}) => {
   const renderCompany = (props) => {
     const { handle } = props.match.params;
-    return <Company handle={handle} />;
+    return <Company handle={handle} currentUser={currentUser} />;
   };
 
   return (
     <div>
       <Switch>
         <Route exact path="/">
-          <Home isLoggedIn={isLoggedIn} />
+          <Home currentUser={currentUser} />
         </Route>
         <Route exact path="/companies">
-          <Companies isLoggedIn={isLoggedIn} />
+          <Companies currentUser={currentUser} />
         </Route>
         <Route exact path="/jobs">
-          <Jobs isLoggedIn={isLoggedIn} />
+          <Jobs currentUser={currentUser} />
         </Route>
         <Route exact path="/companies/:handle" render={renderCompany} />
         <Route exact path="/login">
-          <Login tokenToStorage={tokenToStorage} />
+          <Login
+            tokenToStorage={tokenToStorage}
+            getCurrentUser={getCurrentUser}
+            usernameToStorage={usernameToStorage}
+          />
         </Route>
         <Route exact path="/profile">
-          <Profile />
+          <Profile currentUser={currentUser} />
         </Route>
         <Redirect to="/" />
       </Switch>
