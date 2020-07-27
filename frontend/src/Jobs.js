@@ -29,9 +29,6 @@ const Jobs = ({ companyJobs, currentUser }) => {
 
   const applyToJob = async (id, data) => {
     await JoblyApi.applyToJob(id, data);
-
-    // need to update the job in jobs to have property of state: applied
-    // setJobs((jobs) => updatedJobs);
   };
 
   const render = currentUser ? (
