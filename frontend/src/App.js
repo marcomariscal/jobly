@@ -37,7 +37,11 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Navigation currentUser={currentUser} setToken={setToken} />
+        <Navigation
+          currentUser={currentUser}
+          setToken={setToken}
+          setCurrUser={setUser}
+        />
         <div className="pt-5">
           <Routes
             tokenToStorage={tokenToStorage}

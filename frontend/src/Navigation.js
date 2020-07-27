@@ -3,10 +3,11 @@ import "./Navigation.css";
 import { Navbar, NavbarBrand, Nav, NavItem } from "reactstrap";
 import { NavLink } from "react-router-dom";
 
-const Navigation = ({ currentUser, setToken }) => {
-  const logout = () => {
+const Navigation = ({ currentUser, setToken, setCurrUser }) => {
+  const handleLogout = () => {
     window.localStorage.clear();
     setToken(null);
+    setCurrUser({ currentUser: null });
   };
 
   return (
@@ -31,7 +32,7 @@ const Navigation = ({ currentUser, setToken }) => {
               </NavLink>
             </NavItem>
             <NavItem className="logout mr-4">
-              <NavLink exact to="/" onClick={logout}>
+              <NavLink exact to="/" onClick={handleLogout}>
                 Logout
               </NavLink>
             </NavItem>
