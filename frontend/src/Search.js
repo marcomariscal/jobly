@@ -11,16 +11,12 @@ const Search = ({ searchFor }) => {
     e.persist();
     const { name, value } = e.target;
     setInput((input) => ({ [name]: value }));
-  };
-
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
     searchFor(input);
   };
 
   return (
     <div className="Search">
-      <form onSubmit={handleSearchSubmit}>
+      <form onSubmit={handleChange}>
         <InputGroup size="lg">
           <Label htmlFor="search"></Label>
           <Input

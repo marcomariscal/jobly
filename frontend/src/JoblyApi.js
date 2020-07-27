@@ -2,7 +2,8 @@ import axios from "axios";
 
 class JoblyApi {
   static async request(endpoint, paramsOrData = {}, verb = "get") {
-    paramsOrData._token = // for now, hardcode token for "testing"
+    paramsOrData._token =
+      // for now, hardcode token for "testing"
       // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc" +
       // "3RpbmciLCJpc19hZG1pbiI6ZmFsc2UsImlhdCI6MTU1MzcwMzE1M30." +
       // "COmFETEsTxN_VfIlgIKw0bYJLkvbRQNgO1XCSE8NZ0U";
@@ -35,7 +36,7 @@ class JoblyApi {
 
   static async getCompany(handle) {
     let res = await this.request(`companies/${handle}`);
-    return res.company;
+    return res;
   }
 
   static async getJobs(params = {}) {
@@ -45,7 +46,7 @@ class JoblyApi {
 
   static async getJob(id) {
     let res = await this.request(`jobs/${id}`);
-    return res.company;
+    return res;
   }
 
   static async registerUser(data) {
@@ -65,6 +66,11 @@ class JoblyApi {
 
   static async updateUser(username, data) {
     let res = await this.request(`users/${username}`, data, "patch");
+    return res;
+  }
+
+  static async applyToJob(id, data) {
+    let res = await this.request(`jobs/${id}/apply`, data, "post");
     return res;
   }
 }

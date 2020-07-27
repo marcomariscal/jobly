@@ -3,11 +3,8 @@ import AuthError from "./AuthError";
 import "./Profile.css";
 import JoblyApi from "./JoblyApi";
 import Alert from "./Alert";
-import { useHistory } from "react-router-dom";
 
 const Profile = ({ currentUser }) => {
-  const history = useHistory();
-
   const [formData, setFormData] = useState({
     first_name: currentUser.first_name,
     last_name: currentUser.last_name,
@@ -31,7 +28,7 @@ const Profile = ({ currentUser }) => {
     e.preventDefault();
     try {
       const {
-        user: { email, first_name, last_name, photo_url, username },
+        user: { email, first_name, last_name, photo_url },
       } = await JoblyApi.updateUser(currentUser.username, formData);
 
       // set the form inputs to be the newly updated user info

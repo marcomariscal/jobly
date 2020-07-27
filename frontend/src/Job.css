@@ -20,3 +20,13 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   padding: 1rem;
 }
+
+.Job.btn.btn-primary.active {
+  background-color: rgb(18, 23, 95) !important;
+  border-color: rgb(18, 23, 95) !important;
+}
+
+.Job.btn.btn-primary.disabled {
+  background-color: rgb(50, 57, 155);
+  border-color: rgb(43, 49, 129);
+}
