@@ -20,7 +20,6 @@ const Companies = ({ currentUser }) => {
 
   const searchFor = async (search) => {
     const { companies } = await JoblyApi.getCompanies(search);
-    console.log(search);
     setCompanies(companies);
   };
 

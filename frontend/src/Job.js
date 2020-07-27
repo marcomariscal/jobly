@@ -5,14 +5,6 @@ import JoblyApi from "./JoblyApi";
 const Job = ({ id, title, equity, salary, state, applyToJob }) => {
   const [isApplied, setIsApplied] = useState(false);
 
-  useEffect(() => {
-    async function getJob(id) {
-      const { job } = await JoblyApi.getJob(id);
-      setIsApplied(job.state);
-    }
-    getJob(id);
-  }, [id]);
-
   const handleClick = (e) => {
     const { value } = e.target;
 
