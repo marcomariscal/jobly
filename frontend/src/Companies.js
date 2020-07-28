@@ -7,7 +7,7 @@ import AuthError from "./AuthError";
 
 const Companies = ({ currentUser }) => {
   const [companies, setCompanies] = useState([]);
-  const [loading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     async function getCompanies() {
@@ -45,7 +45,9 @@ const Companies = ({ currentUser }) => {
   );
 
   return (
-    <div className="col-md-8 offset-md-2">{loading ? <Spinner /> : render}</div>
+    <div className="col-md-8 offset-md-2">
+      {isLoading ? <Spinner /> : render}
+    </div>
   );
 };
 

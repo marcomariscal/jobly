@@ -7,7 +7,7 @@ import Spinner from "./Spinner";
 const Company = ({ handle, currentUser }) => {
   const [company, setCompany] = useState({});
   const [companyJobs, setCompanyJobs] = useState([]);
-  const [loading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     async function getCompany(handle) {
@@ -34,7 +34,7 @@ const Company = ({ handle, currentUser }) => {
       <p>{company.description}</p>
       <Jobs
         companyJobs={companyJobs}
-        isLoading={loading}
+        isLoading={isLoading}
         currentUser={currentUser}
       />
     </>
@@ -42,7 +42,7 @@ const Company = ({ handle, currentUser }) => {
     <AuthError />
   );
 
-  return loading ? <Spinner /> : render;
+  return isLoading ? <Spinner /> : render;
 };
 
 export default Company;
