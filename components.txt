@@ -1,27 +1,18 @@
 App
-├── Navigation/Navigation
-└─┬ Routes/Routes
-  ├─┬ Companies/Companies
-  │ ├─┬ CardList/CardList
-  │ │ └─┬ Card/Card
-  │ │   ├── CompanyCard/CompanyCard
-  │ │   └── JobCard/JobCard
-  │ └── Search/Search
-  ├─┬ Company/Company
-  │ └─┬ CardList/CardList
-  │   └─┬ Card/Card
-  │     ├── CompanyCard/CompanyCard
-  │     └── JobCard/JobCard
-  ├── Home/Home
-  ├─┬ Jobs/Jobs
-  │ ├─┬ CardList/CardList
-  │ │ └─┬ Card/Card
-  │ │   ├── CompanyCard/CompanyCard
-  │ │   └── JobCard/JobCard
-  │ └── Search/Search
-  ├─┬ Login/Login
-  │ └── Alert/Alert
-  ├── PrivateRoute/PrivateRoute
-  └─┬ Profile/Profile
-    └── Alert/Alert
+├── Navigation
+└─┬ Routes
+  ├─┬ Companies
+  │ └── CompanyCard
+  │ └── Search
+  ├─┬ Company
+  │ └── JobCard
+  ├── Home
+  ├─┬ Jobs
+  │ └── JobCard
+  │ └── Search
+  ├─┬ Login
+  │ └── Alert
+  ├── PrivateRoute
+  └─┬ Profile
+    └── Alert
 
