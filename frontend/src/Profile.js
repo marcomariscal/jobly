@@ -1,17 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AuthError from "./AuthError";
 import "./Profile.css";
 import JoblyApi from "./JoblyApi";
 import Alert from "./Alert";
+import Spinner from "./Spinner";
 
 const Profile = ({ currentUser }) => {
   const [formData, setFormData] = useState({
-    first_name: currentUser.first_name,
-    last_name: currentUser.last_name,
-    email: currentUser.email,
-    photo_url: currentUser.photo_url || "",
+    first_name: "",
+    last_name: "",
+    email: "",
+    photo_url: "",
     password: "",
   });
+
+  useEffect(() => {
+    if (currentUser) {
+      setFormData({
+        first_name: currentUser.first_name,
+        last_name: currentUser.last_name,
+        email: currentUser.email,
+        photo_url: currentUser.photo_url || "",
+        password: "",
+      });
+    }
+  }, [currentUser]);
 
   const [msgs, setMessages] = useState({ messages: [], type: "" });
 
@@ -27,17 +40,15 @@ const Profile = ({ currentUser }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const {
-        user: { email, first_name, last_name, photo_url },
-      } = await JoblyApi.updateUser(currentUser.username, formData);
+      const { user } = await JoblyApi.updateUser(
+        currentUser.username,
+        formData
+      );
 
       // set the form inputs to be the newly updated user info
       setFormData((fData) => ({
         ...fData,
-        first_name,
-        last_name,
-        email,
-        photo_url,
+        ...user,
         password: "",
       }));
 
@@ -50,7 +61,7 @@ const Profile = ({ currentUser }) => {
   const { first_name, last_name, email, photo_url, password } = formData;
   const { messages, type } = msgs;
 
-  const render = (
+  const render = currentUser ? (
     <div className="Profile col-md-6 col-lg-4 offset-md-3 offset-lg-4">
       <div className="card">
         <div className="card-body">
@@ -69,7 +80,7 @@ const Profile = ({ currentUser }) => {
               </div>
               <input
                 type="text"
-                className="form-control"
+                className="Profile form-control"
                 id="first-name"
                 name="first_name"
                 onChange={handleChange}
@@ -82,7 +93,7 @@ const Profile = ({ currentUser }) => {
               </div>
               <input
                 type="text"
-                className="form-control"
+                className="Profile form-control"
                 id="last-name"
                 name="last_name"
                 onChange={handleChange}
@@ -95,7 +106,7 @@ const Profile = ({ currentUser }) => {
               </div>
               <input
                 type="email"
-                className="form-control"
+                className="Profile form-control"
                 id="email"
                 name="email"
                 onChange={handleChange}
@@ -108,7 +119,7 @@ const Profile = ({ currentUser }) => {
               </div>
               <input
                 type="url"
-                className="form-control"
+                className="Profile form-control"
                 id="photo-url"
                 name="photo_url"
                 onChange={handleChange}
@@ -121,7 +132,7 @@ const Profile = ({ currentUser }) => {
               </div>
               <input
                 type="password"
-                className="form-control"
+                className="Profile form-control"
                 id="password"
                 name="password"
                 onChange={handleChange}
@@ -151,9 +162,11 @@ const Profile = ({ currentUser }) => {
         </div>
       </div>
     </div>
+  ) : (
+    <AuthError />
   );
 
-  return <div>{currentUser ? render : <AuthError />}</div>;
+  return <div>{currentUser !== null ? render : <Spinner />}</div>;
 };
 
 export default Profile;

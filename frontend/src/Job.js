@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Job.css";
-import JoblyApi from "./JoblyApi";
+import { currencyFormat, formatPct } from "./helpers";
 
 const Job = ({ id, title, equity, salary, state, applyToJob }) => {
   const [isApplied, setIsApplied] = useState(false);
@@ -39,8 +39,8 @@ const Job = ({ id, title, equity, salary, state, applyToJob }) => {
         <h6 className="card-title d-flex justify-content-between mb-4">
           <span className="text-capitalize">{title}</span>
         </h6>
-        <div className="card-text">Salary: {salary}</div>
-        <div className="card-text">Equity: {equity}</div>
+        <div className="card-text">Salary: {currencyFormat(salary)}</div>
+        <div className="card-text">Equity: {formatPct(equity)}</div>
         {buttonRender}
       </div>
     </div>

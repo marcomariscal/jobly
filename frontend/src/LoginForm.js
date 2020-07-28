@@ -64,7 +64,7 @@ const LoginForm = ({
         </div>
         <input
           type="text"
-          className="form-control"
+          className="LoginForm form-control"
           id="first-name"
           name="first_name"
           onChange={handleFormChange}
@@ -77,7 +77,7 @@ const LoginForm = ({
         </div>
         <input
           type="text"
-          className="form-control"
+          className="LoginForm form-control"
           id="last-name"
           name="last_name"
           onChange={handleFormChange}
@@ -90,7 +90,7 @@ const LoginForm = ({
         </div>
         <input
           type="email"
-          className="form-control"
+          className="LoginForm form-control"
           id="email"
           name="email"
           onChange={handleFormChange}
@@ -135,7 +135,7 @@ const LoginForm = ({
               </div>
               <input
                 type="text"
-                className="form-control"
+                className="LoginForm form-control"
                 name="username"
                 onChange={handleFormChange}
                 value={username}
@@ -147,7 +147,7 @@ const LoginForm = ({
               </div>
               <input
                 type="password"
-                className="form-control"
+                className="LoginForm form-control"
                 name="password"
                 onChange={handleFormChange}
                 value={password}
@@ -157,7 +157,7 @@ const LoginForm = ({
             {messages.length > 0 && (
               <Alert type={"danger"} messages={messages} />
             )}
-            <button className="LoginForm btn btn-primary">Submit</button>
+            <button className="LoginForm submit btn btn-primary">Submit</button>
           </form>
         </div>
       </div>

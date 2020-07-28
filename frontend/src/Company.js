@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Jobs from "./Jobs";
 import JoblyApi from "./JoblyApi";
 import AuthError from "./AuthError";
-import { Spinner } from "reactstrap";
+import Spinner from "./Spinner";
 
 const Company = ({ handle, currentUser }) => {
   const [company, setCompany] = useState({});

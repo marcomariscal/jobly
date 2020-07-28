@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import CompanyCard from "./CompanyCard";
 import Search from "./Search";
 import JoblyApi from "./JoblyApi";
-import { Spinner } from "reactstrap";
+import Spinner from "./Spinner";
 import AuthError from "./AuthError";
 
 const Companies = ({ currentUser }) => {
@@ -23,11 +23,7 @@ const Companies = ({ currentUser }) => {
     setCompanies(companies);
   };
 
-  const render = loading ? (
-    <div>
-      <Spinner color="dark" />
-    </div>
-  ) : (
+  const render = currentUser ? (
     <div>
       <Search searchFor={searchFor} />
       {companies.length === 0 ? (
@@ -44,12 +40,12 @@ const Companies = ({ currentUser }) => {
         ))
       )}
     </div>
+  ) : (
+    <AuthError />
   );
 
   return (
-    <div className="col-md-8 offset-md-2">
-      {currentUser ? render : <AuthError />}
-    </div>
+    <div className="col-md-8 offset-md-2">{loading ? <Spinner /> : render}</div>
   );
 };
 

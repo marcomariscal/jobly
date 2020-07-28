@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import JoblyApi from "./JoblyApi";
 import Search from "./Search";
 import Job from "./Job";
-import { Spinner } from "reactstrap";
+import Spinner from "./Spinner";
 import AuthError from "./AuthError";
 
 const Jobs = ({ companyJobs, currentUser }) => {
@@ -58,7 +58,7 @@ const Jobs = ({ companyJobs, currentUser }) => {
     <div className="col-md-8 offset-md-2">
       {loading ? (
         <div>
-          <Spinner color="dark" />
+          <Spinner />
         </div>
       ) : (
         render

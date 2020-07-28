@@ -22,6 +22,13 @@ const Routes = ({
   return (
     <div>
       <Switch>
+        <Route exact path="/login">
+          <Login
+            tokenToStorage={tokenToStorage}
+            getCurrentUser={getCurrentUser}
+            usernameToStorage={usernameToStorage}
+          />
+        </Route>
         <Route exact path="/">
           <Home currentUser={currentUser} />
         </Route>
@@ -32,13 +39,6 @@ const Routes = ({
           <Jobs currentUser={currentUser} />
         </Route>
         <Route exact path="/companies/:handle" render={renderCompany} />
-        <Route exact path="/login">
-          <Login
-            tokenToStorage={tokenToStorage}
-            getCurrentUser={getCurrentUser}
-            usernameToStorage={usernameToStorage}
-          />
-        </Route>
         <Route exact path="/profile">
           <Profile currentUser={currentUser} />
         </Route>
