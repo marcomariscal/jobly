@@ -3,6 +3,10 @@
 Jobly allows you to sign up/login to view companies and associated jobs, while also allowing you to apply to jobs
 Jobly built with React, Express, PostgreSQL, and CSS
 
+Please find the production version here:
+
+https://mm-jobly.netlify.app/
+
 ## Backend infrastructure
 
 Express is used along with schema validation, authentication middleware, and routing to ensure a seamless backend integration with React on the frontend
